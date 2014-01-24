@@ -16,7 +16,8 @@ NOTE: rails doesn't like image elements (<img>) outputted. use the image_tag hel
 <%= image_tag(d_two_url, :alt => "die two") %>
 
 <br>
-Close, but no cigar. Roll again!	
+Nice roll! Your goal is to roll a <%= @goal %> before you roll a 7!	
 <br>
-<% link = "href=\"/dice?goal=" + @goal.to_s %>
-<a href=""<%=link%>""> Roll again </a>
+<% roll_again = "href=dice?goal=" + @goal.to_s %>
+<%= roll_again %>
+<a <%= roll_again %>> Roll again </a>

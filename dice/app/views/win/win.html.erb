@@ -5,18 +5,17 @@
 output images 
 NOTE: rails doesn't like image elements (<img>) outputted. use the image_tag helper function instead
 -->
+
 <%
 	d_one_url = "https://uchicago.s3.amazonaws.com/d0"+@die_one_val[0].to_s+".png"
 	d_two_url = "https://uchicago.s3.amazonaws.com/d0"+@die_two_val[0].to_s+".png"
 %>
-
-<%= @goal %>
-
 <%= image_tag(d_one_url, :alt => "die one") %>
 <%= image_tag(d_two_url, :alt => "die two") %>
 
 <br>
-Close, but no cigar. Roll again!	
+WIN!
+asdfasdf
 <br>
-<% link = "href=\"/dice?goal=" + @goal.to_s %>
-<a href=""<%=link%>""> Roll again </a>
+
+<a href="/welcome">You Won! Start a new game!</a>

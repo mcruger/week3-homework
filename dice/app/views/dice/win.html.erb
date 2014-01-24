@@ -1,22 +1,39 @@
 <h1>dice</h1>
 <hr>
+<style type="text/css">
+a:link,a:visited
+{
+display:block;
+font-weight:bold;
+color:#FFFFFF;
+background-color:#98bf21;
+width:120px;
+text-align:center;
+padding:4px;
+text-decoration:none;
+}
+a:hover,a:active
+{
+background-color:#7A991A;
+}
+</style>
 
 <!-- 
 output images 
 NOTE: rails doesn't like image elements (<img>) outputted. use the image_tag helper function instead
 -->
+
 <%
 	d_one_url = "https://uchicago.s3.amazonaws.com/d0"+@die_one_val[0].to_s+".png"
 	d_two_url = "https://uchicago.s3.amazonaws.com/d0"+@die_two_val[0].to_s+".png"
 %>
-
-<%= @goal %>
-
 <%= image_tag(d_one_url, :alt => "die one") %>
 <%= image_tag(d_two_url, :alt => "die two") %>
+<br>
+WIN!
+<br>
+<a href="/welcome">You Won! Start a new game! </a>
 
-<br>
-Close, but no cigar. Roll again!	
-<br>
-<% link = "href=\"/dice?goal=" + @goal.to_s %>
-<a href=""<%=link%>""> Roll again </a>
+<form method="GET" action="/welcome">
+<input type="submit" value="Click me!!!">
+</form>
