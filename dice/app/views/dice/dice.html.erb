@@ -1,0 +1,13 @@
+<h1>dice</h1>
+
+<% 
+die_one = @dice_values.first
+die_two = @dice_values.second
+%>
+
+<!-- 
+output images 
+NOTE: rails doesn't like image elements (<img>) outputted. use the image_tag helper function instead
+-->
+<%= image_tag("https://uchicago.s3.amazonaws.com/d0"+die_one.to_s+".png", :alt => "die one") %>
+<%= image_tag("https://uchicago.s3.amazonaws.com/d0"+die_two.to_s+".png", :alt => "die two") %>
