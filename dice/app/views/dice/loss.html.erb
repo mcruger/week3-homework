@@ -1,19 +1,27 @@
-<h1>dice</h1>
-<hr>
+<div class="container">
+	<h1>Dice - YOU LOST!</h1>
+	<hr>
 
-<!-- 
-output images 
-NOTE: rails doesn't like image elements (<img>) outputted. use the image_tag helper function instead
--->
+	<!-- 
+	output images 
+	NOTE: rails doesn't like image elements (<img>) outputted. use the image_tag helper function instead
+	-->
 
-<%
-	d_one_url = "https://uchicago.s3.amazonaws.com/d0"+@die_one_val[0].to_s+".png"
-	d_two_url = "https://uchicago.s3.amazonaws.com/d0"+@die_two_val[0].to_s+".png"
-%>
-<%= image_tag(d_one_url, :alt => "die one") %>
-<%= image_tag(d_two_url, :alt => "die two") %>
+	<%
+		d_one_url = "https://uchicago.s3.amazonaws.com/d0"+@die_one_val[0].to_s+".png"
+		d_two_url = "https://uchicago.s3.amazonaws.com/d0"+@die_two_val[0].to_s+".png"
+	%>
+	<%= image_tag(d_one_url, :alt => "die one") %>
+	<%= image_tag(d_two_url, :alt => "die two") %>
 
-<br>
-You lost, loser.
-<br>
-<a href="/welcome">Lost, start a new game</a>	
+	<br>
+	<% if @goal == 0 %> <!-- a goal of 0 and a loss means it was a first roll -->
+		<h3> Bad Luck! You rolled a <%=@roll_total%> on your first roll. You lost, loser. </h3>
+	<% else %>
+		<h3> You needed to roll a <%=@goal%>, but you rolled a <%=@roll_total%>. You lost, loser. </h3>
+	<% end %>
+	
+	<br>
+
+	<a class="btn btn-large btn-danger" href="/welcome">Start a new game</a>	
+</div>

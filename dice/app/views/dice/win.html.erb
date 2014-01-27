@@ -1,39 +1,25 @@
-<h1>dice</h1>
-<hr>
-<style type="text/css">
-a:link,a:visited
-{
-display:block;
-font-weight:bold;
-color:#FFFFFF;
-background-color:#98bf21;
-width:120px;
-text-align:center;
-padding:4px;
-text-decoration:none;
-}
-a:hover,a:active
-{
-background-color:#7A991A;
-}
-</style>
+<div class="container">
+	<h1>Dice - WINNER!</h1>
+	<hr>
 
-<!-- 
-output images 
-NOTE: rails doesn't like image elements (<img>) outputted. use the image_tag helper function instead
--->
-
-<%
-	d_one_url = "https://uchicago.s3.amazonaws.com/d0"+@die_one_val[0].to_s+".png"
-	d_two_url = "https://uchicago.s3.amazonaws.com/d0"+@die_two_val[0].to_s+".png"
-%>
-<%= image_tag(d_one_url, :alt => "die one") %>
-<%= image_tag(d_two_url, :alt => "die two") %>
-<br>
-WIN!
-<br>
-<a href="/welcome">You Won! Start a new game! </a>
-
-<form method="GET" action="/welcome">
-<input type="submit" value="Click me!!!">
-</form>
+	<!-- 
+	output images 
+	NOTE: rails doesn't like image elements (<img>) outputted. use the image_tag helper function instead
+	-->
+	<%
+		d_one_url = "https://uchicago.s3.amazonaws.com/d0"+@die_one_val[0].to_s+".png"
+		d_two_url = "https://uchicago.s3.amazonaws.com/d0"+@die_two_val[0].to_s+".png"
+	%>
+	<%= image_tag(d_one_url, :alt => "die one") %>
+	<%= image_tag(d_two_url, :alt => "die two") %>
+	<br>
+	<!-- using roll_total here instead of goal to show correct total on insta-wins -->
+	
+	<% if @goal == 0 %> <!-- a goal of 0 and a win means it was a first roll -->
+		<h3> NICE! You rolled a <%=@roll_total%> on your first roll! </h3>
+	<% else %>
+		<h3>Congratulations, you rolled your goal of <%=@roll_total%>! You WIN!</h3>
+	<% end %>
+	<br>
+	<a class="btn btn-large btn-success" href="/welcome"> Start a new game! </a>
+</div>

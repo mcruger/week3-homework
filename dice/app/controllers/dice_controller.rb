@@ -1,7 +1,5 @@
 class DiceController < ApplicationController 
 
-
-
 	def roll_dice
 
 		#goal value needed to win
@@ -13,12 +11,11 @@ class DiceController < ApplicationController
 		insta_win_values = [7, 11]  #win if rolled on first roll
 		insta_loss_values = [2, 3, 12] #lose if rolled on first roll
 
-
 		#get values for the dice
 		@die_one_val = die_values.sample(1);
 		@die_two_val = die_values.sample(1);
-		#@roll_total = @die_one_val[0] + @die_two_val[0]
-		@roll_total = 7
+		@roll_total = @die_one_val[0] + @die_two_val[0]
+		#@roll_total = 
 	
 		if @goal == 0
 			#user started a new game and this is their first roll

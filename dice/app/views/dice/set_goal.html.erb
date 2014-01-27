@@ -1,23 +1,23 @@
-<h1>dice</h1>
-<hr>
+<div class="container">
+	<h1>Dice - First Roll</h1>
+	<hr>
 
-<!-- 
-output images 
-NOTE: rails doesn't like image elements (<img>) outputted. use the image_tag helper function instead
--->
-<%
-	d_one_url = "https://uchicago.s3.amazonaws.com/d0"+@die_one_val[0].to_s+".png"
-	d_two_url = "https://uchicago.s3.amazonaws.com/d0"+@die_two_val[0].to_s+".png"
-%>
+	<!-- 
+	output images 
+	NOTE: rails doesn't like image elements (<img>) outputted. use the image_tag helper function instead
+	-->
+	<%
+		d_one_url = "https://uchicago.s3.amazonaws.com/d0"+@die_one_val[0].to_s+".png"
+		d_two_url = "https://uchicago.s3.amazonaws.com/d0"+@die_two_val[0].to_s+".png"
+	%>
 
-<%= @goal %>
 
-<%= image_tag(d_one_url, :alt => "die one") %>
-<%= image_tag(d_two_url, :alt => "die two") %>
+	<%= image_tag(d_one_url, :alt => "die one") %>
+	<%= image_tag(d_two_url, :alt => "die two") %>
 
-<br>
-Nice roll! Your goal is to roll a <%= @goal %> before you roll a 7!	
-<br>
-<% roll_again = "href=dice?goal=" + @goal.to_s %>
-<%= roll_again %>
-<a <%= roll_again %>> Roll again </a>
+	<br>
+	<h3> Nice roll! Your goal is to roll a <%= @goal %> before you roll a 7!	</h3>
+	<br>
+	<% roll_again = "href=dice?goal=" + @goal.to_s %>
+	<a class="btn btn-large btn-info" <%= roll_again %>> Roll again </a>
+</div>
